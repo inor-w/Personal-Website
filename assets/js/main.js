@@ -72,6 +72,7 @@
     const ssPreloader = function() {
 
         const preloader = document.querySelector('#preloader');
+        if (!preloader) return;
         
         window.addEventListener('load', function() {
             document.querySelector('html').classList.remove('ss-preload');
@@ -81,27 +82,7 @@
                 item.classList.remove('ss-animated');
             });
 
-            // Only try to animate preloader if it exists
-            if (preloader) {
-                tl.play();
-            } else {
-                // If no preloader, just animate the header and content directly
-                anime({
-                    targets: '.s-header',
-                    translateY: [-100, 0],
-                    opacity: [0, 1],
-                    duration: 800,
-                    easing: 'easeInOutCubic'
-                });
-                anime({
-                    targets: [ '.s-intro .text-pretitle', '.s-intro .text-huge-title'],
-                    translateX: [100, 0],
-                    opacity: [0, 1],
-                    delay: anime.stagger(400),
-                    duration: 800,
-                    easing: 'easeInOutCubic'
-                });
-            }
+            tl.play();
         });
 
         // force page scroll position to top at page refresh

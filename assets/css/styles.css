@@ -2930,8 +2930,6 @@ img.u-pull-left {
     position     : fixed;
     top          : 0;
     left         : 0;
-    opacity      : 1;
-    transform    : translateY(0);
 }
 
 .header-mobile {
