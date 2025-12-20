@@ -3013,7 +3013,7 @@ img.u-pull-left {
  * ## mobile menu toggle
  * -------------------------------------------------------------------- */
 .mobile-menu-toggle {
-    display         : block;
+    display         : none;
     width           : var(--header-height);
     height          : var(--header-height);
     position        : absolute;
@@ -3103,6 +3103,10 @@ img.u-pull-left {
     .header-mobile {
         display : block;
         position : relative;
+    }
+
+    .mobile-menu-toggle {
+        display : block;
     }
 
     .main-nav-wrap {
