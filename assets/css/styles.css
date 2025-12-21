@@ -501,8 +501,9 @@ template {
  * ------------------------------------------------------------------- */
 
 html {
-    font-size  : var(--base-size);
-    box-sizing : border-box;
+    font-size       : var(--base-size);
+    box-sizing      : border-box;
+    background-color : var(--color-body);
 }
 
 *,
@@ -517,12 +518,31 @@ body {
 }
 
 body {
-    background-color            : var(--color-body);
+    background-color            : var(--color-body) !important;
     -webkit-overflow-scrolling  : touch;
     -webkit-text-size-adjust    : 100%;
     -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
     -webkit-font-smoothing      : antialiased;
     -moz-osx-font-smoothing     : grayscale;
+}
+
+/* Ensure all main content areas have uniform background */
+main,
+/* Ensure uniform background across all sections */
+.s-content,
+.s-intro,
+.s-about,
+.s-works,
+.s-footer,
+.s-contact,
+section {
+    background-color : var(--color-body) !important;
+}
+
+/* Ensure row and column elements don't add backgrounds */
+.row,
+.column {
+    background-color : transparent !important;
 }
 
 p {
@@ -2666,6 +2686,9 @@ img.u-pull-left {
     margin-left    : .2rem;
     margin-bottom  : var(--vspace-0_5);
     position       : relative;
+    visibility     : visible !important;
+    opacity        : 1 !important;
+    display        : block !important;
 }
 
 .text-pretitle.with-line {
@@ -2690,6 +2713,10 @@ img.u-pull-left {
     font-size   : var(--text-huge);
     line-height : 1.0740;
     margin-top  : 0;
+    visibility  : visible !important;
+    opacity     : 1 !important;
+    display     : block;
+    color       : white;
 }
 
 /* ------------------------------------------------------------------- 
@@ -2905,6 +2932,34 @@ img.u-pull-left {
     visibility : hidden;
 }
 
+/* Ensure header and content are visible even during preload */
+.ss-preload .s-header,
+.ss-preload .s-content,
+.ss-preload .s-intro,
+.ss-preload .intro-content,
+.ss-preload .text-huge-title,
+.ss-preload .text-pretitle {
+    visibility : visible !important;
+    opacity    : 1 !important;
+}
+
+.ss-preload .s-header {
+    transform : translateY(0) !important;
+}
+
+.ss-preload .text-huge-title,
+.ss-preload .text-pretitle {
+    transform : translateX(0) !important;
+    opacity   : 1 !important;
+}
+
+/* Ensure header is visible even during preload */
+.ss-preload .s-header {
+    visibility : visible !important;
+    opacity    : 1 !important;
+    transform  : translateY(0) !important;
+}
+
 /* ------------------------------------------------------------------- 
  * responsive:
  * page-wrap
@@ -2935,6 +2990,8 @@ img.u-pull-left {
     background-color : var(--color-body);
     display      : block;
     visibility   : visible;
+    height       : auto;
+    min-height   : var(--header-height);
 }
 
 .header-mobile {
@@ -3103,12 +3160,52 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 /* Ensure desktop nav is visible */
 @media screen and (min-width: 801px) {
+    .s-header {
+        height         : auto;
+        min-height     : var(--header-height);
+        display        : block !important;
+        visibility     : visible !important;
+        opacity        : 1 !important;
+        background-color : var(--color-body) !important;
+    }
+
     .main-nav-wrap {
         display          : block !important;
         visibility       : visible !important;
         opacity          : 1 !important;
         position         : relative !important;
         transform        : none !important;
+        width            : 100% !important;
+    }
+
+    .main-nav {
+        display    : block !important;
+        visibility : visible !important;
+        opacity    : 1 !important;
+        padding    : 0 !important;
+    }
+
+    .main-nav ul {
+        display          : flex !important;
+        visibility       : visible !important;
+        opacity          : 1 !important;
+        flex-flow        : row nowrap !important;
+    }
+
+    .main-nav li {
+        display : block !important;
+        visibility : visible !important;
+    }
+
+    .main-nav a {
+        display    : block !important;
+        visibility : visible !important;
+        opacity    : 1 !important;
+        color      : white !important;
+    }
+
+    .header-mobile {
+        display : none !important;
     }
 }
 
@@ -3265,6 +3362,7 @@ img.u-pull-left {
     --gutter               : 6rem;
     --text-huge-multiplier : 1;
     position               : relative;
+    background-color       : var(--color-body) !important;
 }
 
 .intro-content {
@@ -3273,11 +3371,27 @@ img.u-pull-left {
     align-items     : center;
     padding-top     : calc(16vh + var(--header-height));
     padding-bottom  : var(--vspace-3);
+    display         : flex !important;
+    visibility      : visible !important;
+    opacity         : 1 !important;
+    flex-direction  : row;
+    flex-wrap       : wrap;
+    width           : 100%;
+}
+
+.intro-content .column {
+    display    : block !important;
+    visibility : visible !important;
+    opacity    : 1 !important;
 }
 
 .intro-content .text-huge-title {
     font-size     : calc(var(--text-huge) * var(--text-huge-multiplier));
     padding-right : 5vw;
+    color         : white !important;
+    visibility    : visible !important;
+    opacity       : 1 !important;
+    display       : block !important;
 }
 
 /* Make the UTSA logo behave like a banner */
@@ -3474,8 +3588,9 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 
 .s-about {
-    padding-top    : var(--vspace-4);
-    padding-bottom : var(--vspace-3);
+    padding-top     : var(--vspace-4);
+    padding-bottom  : var(--vspace-3);
+    background-color : var(--color-body) !important;
 }
 
 /* --------------------------------------------------------------------
@@ -3665,8 +3780,9 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 
 .s-works {
-    padding-top    : var(--vspace-5);
-    padding-bottom : var(--vspace-3_5);
+    padding-top     : var(--vspace-5);
+    padding-bottom  : var(--vspace-3_5);
+    background-color : var(--color-body) !important;
 }
 
 .s-works .h1 {
@@ -4206,10 +4322,11 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 
 .s-footer {
-    margin-top     : auto;
-    padding-top    : var(--vspace-1);
-    padding-bottom : var(--vspace-3);
-    color          : var(--color-text-light);
+    margin-top      : auto;
+    padding-top     : var(--vspace-1);
+    padding-bottom  : var(--vspace-3);
+    color           : var(--color-text-light);
+    background-color : var(--color-body) !important;
 }
 
 .s-footer>.row {
