@@ -120,10 +120,19 @@
         const mainNavWrap = document.querySelector('.main-nav-wrap');
         const siteBody = document.querySelector("body");
 
-        if (!(toggleButton && mainNavWrap)) return;
+        if (!toggleButton) {
+            console.warn('Mobile menu toggle button not found');
+            return;
+        }
+        
+        if (!mainNavWrap) {
+            console.warn('Main nav wrap not found');
+            return;
+        }
 
         toggleButton.addEventListener('click', function(event) {
             event.preventDefault();
+            event.stopPropagation();
             toggleButton.classList.toggle('is-clicked');
             siteBody.classList.toggle('menu-is-open');
         });
