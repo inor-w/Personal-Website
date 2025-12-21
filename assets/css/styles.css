@@ -2932,6 +2932,9 @@ img.u-pull-left {
     left         : 0;
     opacity      : 1;
     transform    : translateY(0);
+    background-color : var(--color-body);
+    display      : block;
+    visibility   : visible;
 }
 
 .header-mobile {
@@ -2976,8 +2979,11 @@ img.u-pull-left {
 }
 
 .main-nav-wrap {
-    display  : block;
-    position : relative;
+    display          : block;
+    position         : relative;
+    visibility       : visible;
+    opacity          : 1;
+    background-color : var(--color-body);
 }
 
 .main-nav {
@@ -3095,6 +3101,17 @@ img.u-pull-left {
  * responsive:
  * site-header
  * ------------------------------------------------------------------- */
+/* Ensure desktop nav is visible */
+@media screen and (min-width: 801px) {
+    .main-nav-wrap {
+        display          : block !important;
+        visibility       : visible !important;
+        opacity          : 1 !important;
+        position         : relative !important;
+        transform        : none !important;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .main-nav-wrap {
         width : 100%;
@@ -3133,19 +3150,19 @@ img.u-pull-left {
 
     /* Hide desktop nav bar on mobile - only show when menu is open */
     .main-nav-wrap {
-        position         : absolute;
-        top              : 100%;
-        left             : 0;
-        width            : 100%;
-        transform        : scaleY(0);
+        position         : absolute !important;
+        top              : 100% !important;
+        left             : 0 !important;
+        width            : 100% !important;
+        transform        : scaleY(0) !important;
         transform-origin : center top;
         background-color : var(--color-body);
         border-bottom    : 1px solid var(--color-border);
         box-shadow       : var(--box-shadow);
         overflow         : hidden;
         z-index          : 100;
-        visibility       : hidden;
-        opacity          : 0;
+        visibility       : hidden !important;
+        opacity          : 0 !important;
     }
 
 
