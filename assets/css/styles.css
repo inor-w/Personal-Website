@@ -1566,6 +1566,22 @@ hr.fancy::before {
     letter-spacing : .3em;
 }
 
+/* Section dividers */
+.section-divider {
+    border          : 0;
+    height          : 1px;
+    background      : var(--color-border);
+    margin          : var(--vspace-4) 0;
+    opacity         : 0.5;
+}
+
+@media screen and (max-width: 800px) {
+    .section-divider {
+        margin : var(--vspace-3) 0;
+    }
+}
+
+
 /* --------------------------------------------------------------------
  * ## additional typography & helper classes
  * -------------------------------------------------------------------- */
@@ -3220,100 +3236,46 @@ img.u-pull-left {
 }
 
 @media screen and (max-width: 800px) {
+    /* Hide entire header on mobile */
     .s-header {
-        height         : var(--header-height);
-        background-color : var(--color-body);
+        display : none !important;
+        visibility : hidden !important;
+        height : 0 !important;
+        min-height : 0 !important;
     }
-
+    
     .header-mobile {
-        display          : flex;
-        align-items      : center;
-        justify-content  : space-between;
-        position         : relative;
-        width            : 100%;
-        height           : 100%;
-        padding          : 0 1.6rem;
-    }
-
-    .mobile-page-name {
-        display       : inline-block;
-        position      : relative;
-        color         : white;
-        font-size     : 10px;
-        font-weight   : 400;
-        line-height   : var(--header-height);
-        text-transform : uppercase;
-        letter-spacing : 0.35em;
-        flex          : 1;
-    }
-
-    .mobile-menu-toggle {
-        display         : flex !important;
-        align-items     : center !important;
-        justify-content : center !important;
-        position        : relative !important;
-        top             : auto !important;
-        right           : auto !important;
-        width           : 44px !important;
-        height          : 44px !important;
-        min-width       : 44px !important;
-        min-height      : 44px !important;
-        z-index         : 102 !important;
-        cursor          : pointer !important;
-        flex-shrink     : 0;
-        pointer-events  : auto !important;
-        background-color : rgba(255, 255, 255, 0.1) !important;
-        border-radius   : 50% !important;
-        -webkit-tap-highlight-color : rgba(255, 255, 255, 0.2) !important;
-        transition      : background-color 0.2s ease;
+        display : none !important;
     }
     
-    .mobile-menu-toggle:hover,
-    .mobile-menu-toggle:focus {
-        background-color : rgba(255, 255, 255, 0.15) !important;
-    }
-    
-    .mobile-menu-toggle span {
-        margin-right : 0 !important;
-        right        : auto !important;
-        left         : 50% !important;
-        transform    : translateX(-50%) !important;
-        position     : absolute !important;
-        top          : 50% !important;
-        bottom       : auto !important;
-        margin-top   : -0.5px !important;
-        width        : 20px !important;
-    }
-    
-    .mobile-menu-toggle span::before,
-    .mobile-menu-toggle span::after {
-        left            : 0 !important;
-        background-color : var(--color-1) !important;
-    }
-    
-    .mobile-menu-toggle span {
-        background-color : var(--color-1) !important;
-    }
-    
-    .mobile-menu-toggle.is-clicked {
-        background-color : rgba(255, 255, 255, 0.2) !important;
-    }
-
-    /* Hide desktop nav bar on mobile - only show when menu is open */
     .main-nav-wrap {
-        position         : absolute !important;
-        top              : 100% !important;
-        left             : 0 !important;
-        width            : 100% !important;
-        transform        : scaleY(0) !important;
-        transform-origin : center top;
-        background-color : var(--color-body);
-        border-bottom    : 1px solid var(--color-border);
-        box-shadow       : var(--box-shadow);
-        overflow         : hidden;
-        z-index          : 100;
-        visibility       : hidden !important;
-        opacity          : 0 !important;
+        display : none !important;
+    }
+    
+    /* Remove header spacing on mobile since header is hidden */
+    .s-content {
+        padding-top : 2rem !important;
+    }
+    
+    .s-content > section {
+        padding-top : 2rem !important;
+        padding-bottom : var(--vspace-3) !important;
+    }
+    
+    .s-content > section:first-child {
+        padding-top : 2rem !important;
+    }
+    
+    .s-intro {
+        padding-top : 2rem !important;
+    }
+    
+    .intro-content {
+        padding-top : 2rem !important;
+    }
+    
+    .mobile-menu-toggle {
+        display : none !important;
     }
 
 
