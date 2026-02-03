@@ -3277,6 +3277,153 @@ img.u-pull-left {
     .mobile-menu-toggle {
         display : none !important;
     }
+    
+    /* Center everything in education section on mobile */
+    #education .row.intro-content,
+    #education .intro-content {
+        text-align : center !important;
+        display : flex !important;
+        flex-direction : column !important;
+        align-items : center !important;
+        justify-content : center !important;
+    }
+    
+    #education .intro-content > div,
+    #education .intro-content .lg-8,
+    #education .intro-content .column {
+        width : 100% !important;
+        max-width : 100% !important;
+        text-align : center !important;
+        margin-left : auto !important;
+        margin-right : auto !important;
+        display : flex !important;
+        flex-direction : column !important;
+        align-items : center !important;
+        justify-content : center !important;
+    }
+    
+    #education .intro-content img {
+        display : block !important;
+        margin-left : auto !important;
+        margin-right : auto !important;
+        max-width : 100% !important;
+        height : auto !important;
+    }
+    
+    #education .intro-content .text-pretitle {
+        text-align : center !important;
+        margin-left : auto !important;
+        margin-right : auto !important;
+    }
+    
+    /* Hide coursework sections on mobile - Cybersecurity and Computer Science columns */
+    .about-timelines .column.mobile-hide-coursework,
+    .about-timelines .mobile-hide-coursework.column,
+    .row.about-timelines .column.mobile-hide-coursework {
+        display : none !important;
+        visibility : hidden !important;
+        height : 0 !important;
+        overflow : hidden !important;
+        margin : 0 !important;
+        padding : 0 !important;
+        width : 0 !important;
+        min-height : 0 !important;
+        max-height : 0 !important;
+    }
+    
+    /* Hide "Misc." heading on mobile */
+    .mobile-hide-misc,
+    h2.mobile-hide-misc,
+    .text-pretitle.mobile-hide-misc,
+    .about-timelines h2.mobile-hide-misc {
+        display : none !important;
+        visibility : hidden !important;
+        height : 0 !important;
+        overflow : hidden !important;
+        margin : 0 !important;
+        padding : 0 !important;
+        line-height : 0 !important;
+    }
+    
+    /* Hide Research Interests section on mobile */
+    .mobile-hide-research,
+    .timeline__header.mobile-hide-research,
+    .timeline__desc.mobile-hide-research,
+    .timeline .timeline__header.mobile-hide-research,
+    .timeline .timeline__desc.mobile-hide-research {
+        display : none !important;
+        visibility : hidden !important;
+        height : 0 !important;
+        overflow : hidden !important;
+        margin : 0 !important;
+        padding : 0 !important;
+        min-height : 0 !important;
+        max-height : 0 !important;
+    }
+    
+    /* Hide Certifications in the third column on mobile */
+    .about-timelines .column.mobile-hide-certifications,
+    .about-timelines .mobile-hide-certifications.column,
+    .row.about-timelines .column.mobile-hide-certifications,
+    .about-timelines .lg-4.mobile-hide-certifications,
+    .about-timelines .tab-4.mobile-hide-certifications {
+        display : none !important;
+        visibility : hidden !important;
+        height : 0 !important;
+        overflow : hidden !important;
+        margin : 0 !important;
+        padding : 0 !important;
+        width : 0 !important;
+        min-height : 0 !important;
+        max-height : 0 !important;
+        position : absolute !important;
+        left : -9999px !important;
+    }
+    
+    /* Show mobile-only Certifications section */
+    .mobile-certifications-only {
+        display : block !important;
+        visibility : visible !important;
+        width : 100% !important;
+        margin-top : var(--vspace-2) !important;
+        margin-bottom : var(--vspace-2) !important;
+        text-align : center !important;
+    }
+    
+    .mobile-certifications-only .timeline {
+        margin-left : auto !important;
+        margin-right : auto !important;
+        text-align : center !important;
+        max-width : fit-content !important;
+    }
+    
+    .mobile-certifications-only .timeline__title {
+        text-align : center !important;
+    }
+    
+    .mobile-certifications-only .timeline__desc {
+        text-align : center !important;
+    }
+    
+    .mobile-certifications-only .timeline__desc ul {
+        display : inline-block !important;
+        text-align : left !important;
+        margin-left : auto !important;
+        margin-right : auto !important;
+    }
+}
+
+/* Hide mobile-only Certifications on desktop */
+@media screen and (min-width: 801px) {
+    .mobile-certifications-only {
+        display : none !important;
+        visibility : hidden !important;
+    }
+    
+    .mobile-hide-certifications {
+        display : block !important;
+        visibility : visible !important;
+    }
 
 
     .main-nav {
