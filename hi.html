@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffb6c1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 3.5em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .message {
+            color: #ff69b4;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            min-height: 50px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            transform: scale(1);
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .yes-btn:active {
+            transform: scale(0.95);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+            color: #ff1493;
+            position: relative;
+        }
+
+        .no-btn:hover {
+            transform: translateX(calc(var(--random-x, 0) * 1px)) translateY(calc(var(--random-y, 0) * 1px));
+        }
+
+        .no-btn:active {
+            transform: scale(0.95);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90vh;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        .chicken-text {
+            font-size: 5em;
+            font-weight: bold;
+            color: #ff1493;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(255, 20, 147, 0.3);
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+
+        .close-modal {
+            margin-top: 20px;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+            }
+
+            .chicken-text {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="message" id="message"></div>
+        <div class="buttons">
+            <button class="yes-btn" id="yesBtn">Yes! 💖</button>
+            <button class="no-btn" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <!-- Modal for chicken butt text -->
+    <div class="modal-overlay" id="chickenModal">
+        <div class="modal-content">
+            <div class="chicken-text">CHICKEN BUTT</div>
+            <button class="close-modal" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        const messages = [
+            "wrong answer, try again",
+            "wait.. do you actually mean no? :(",
+            "but... but... but.... say yes!!!!!",
+            "WRONG ANSWER, TRY AGAIN"
+        ];
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const messageEl = document.getElementById('message');
+        const chickenModal = document.getElementById('chickenModal');
+        const closeModal = document.getElementById('closeModal');
+
+        yesBtn.addEventListener('click', () => {
+            window.location.href = 'celebration.html';
+        });
+
+        noBtn.addEventListener('click', () => {
+            noClickCount++;
+            
+            // Show chicken butt image if clicked more than 5 times
+            if (noClickCount > 5) {
+                chickenModal.classList.add('show');
+            }
+            
+            let message;
+            if (noClickCount <= messages.length) {
+                message = messages[noClickCount - 1];
+            } else {
+                message = "WRONG ANSWER, TRY AGAIN";
+            }
+
+            messageEl.textContent = message;
+            messageEl.style.animation = 'none';
+            setTimeout(() => {
+                messageEl.style.animation = 'fadeIn 0.3s ease-in';
+            }, 10);
+
+            // Make the "No" button move randomly
+            const randomX = (Math.random() - 0.5) * 100;
+            const randomY = (Math.random() - 0.5) * 100;
+            noBtn.style.setProperty('--random-x', randomX);
+            noBtn.style.setProperty('--random-y', randomY);
+            
+            // Also move it with transform
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            setTimeout(() => {
+                noBtn.style.transform = '';
+            }, 300);
+        });
+
+        // Close modal when clicking close button or overlay
+        closeModal.addEventListener('click', () => {
+            chickenModal.classList.remove('show');
+        });
+
+        chickenModal.addEventListener('click', (e) => {
+            if (e.target === chickenModal) {
+                chickenModal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
